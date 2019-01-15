@@ -1,0 +1,45 @@
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+}
+/* h4 {
+  color: white;
+}
+.mat-button {
+  color: white;
+}
+.matInput {
+  color: white;
+}
+.mat-tab-label {
+  min-width: 25px !important;
+  padding: 5px;
+  background-color: transparent;
+  color: white;
+  font-weight: 700;
+}
+#about {
+  color: white;
+  font-style: oblique;
+} */
+.mat-tab-group {
+  position: fixed; /* or absolute */
+  top: 10%;
+  left: 30%;
+  border-radius: 10px;
+}
+.frontpage-card {
+  margin-top: 100px;
+  margin-left: 500px;
+  margin-right: 800px;
+  height: 400px;
+}
+.phytogenLogo {
+  height: 300px;
+  width: 75%;
+}

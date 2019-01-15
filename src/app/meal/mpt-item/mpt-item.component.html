@@ -1,0 +1,175 @@
+<div class="meal-wrapper">
+  <aside>
+    <div class="example-container">
+      <h3>Food items</h3>
+      <button
+        class="myButton"
+        mat-button
+        color="primary"
+        id="createFoodBtn"
+        (click)="openDialog()"
+      >
+        Create food item
+      </button>
+
+      <div
+        cdkDropList
+        #foodListRef="cdkDropList"
+        [cdkDropListData]="foodList"
+        [cdkDropListConnectedTo]="[createMealList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div class="example-box" *ngFor="let food of foodList" cdkDrag>
+          <b>{{ food.name }}</b>
+          <div>
+            Protein {{ food.protein }}g Carbs {{ food.carbs }}g Fat
+            {{ food.fat }}g {{ food.kcal }} kcal/100g
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <section>
+    <div id="createMealSection">
+      <h3>Create new Meal</h3>
+
+      <form class="form-container" [formGroup]="mealForm">
+        <mat-form-field>
+          <b>Name of the Meal</b> <input matInput formControlName="name" />
+        </mat-form-field>
+      </form>
+      <div class="example-container">
+        <div class="example-container">
+          <h4>Ingredients:</h4>
+          <p>Drag and drop food items below</p>
+          <div
+            cdkDropList
+            #createMealList="cdkDropList"
+            [cdkDropListData]="currentFoodArray"
+            [cdkDropListConnectedTo]="[todoList]"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)"
+          >
+            <div
+              class="example-box"
+              *ngFor="let food of currentFoodArray"
+              cdkDrag
+            >
+              <b>{{ food.name }}</b>
+              <div>
+                Protein {{ food.protein }}g Carbs {{ food.carbs }}g Fat
+                {{ food.fat }}g {{ food.kcal }} kcal/100g
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <button mat-raised-button color="primary" (click)="deleteFood(i)">Delete food</button> -->
+      </div>
+    </div>
+    <button mat-button color="primary" mat-button (click)="CreateMeal()">
+      Create Meal
+    </button>
+    <br />
+    <div>
+      <!--       <mat-form-field>
+        <input
+          #searchMealName
+          name="name"
+          matInput
+          placeholder="Search for meal"
+        />
+      </mat-form-field> -->
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input
+            type="text"
+            placeholder="Search for meal"
+            aria-label="Assignee"
+            matInput
+            [formControl]="myControl"
+            [matAutocomplete]="auto"
+          />
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option
+              *ngFor="let option of (filteredOptions | async)"
+              [value]="option"
+            >
+              <div (click)="searchForMeal(option.name)">
+                Choose {{ option.name }}
+              </div>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+      <!--       <button
+        mat-raised-button
+        color="primary"
+        mat-button
+        (click)="searchForMeal(searchMealName)"
+      >
+        Search
+      </button> -->
+    </div>
+    <div *ngIf="foundMeal">
+      <!-- *ngFor="let meal of mealList" -->
+      <!-- {{meal.name}} -->
+      Add The Meal To:
+      <button mat-button [matMenuTriggerFor]="menu">Choose Meal</button>
+      <mat-menu #menu="matMenu">
+        <button
+          mat-menu-item
+          *ngFor="let meal of meals"
+          (click)="addMealToMpt($event, meal)"
+        >
+          {{ meal }}
+        </button>
+      </mat-menu>
+      <br />
+    </div>
+  </section>
+  <div id="currentMpt">
+    <!-- currentMpt -->
+    <!-- currentMpt -->
+    <!-- currentMpt -->
+    <h3>{{ currentMpt.title }}</h3>
+    <!-- {{currentMpt.totalKcal | number : '1.2-2'}} kcal {{currentMpt.totalProtein | number : '1.2-2'}} protein {{currentMpt.totalCarbs | number : '1.2-2'}} carbs {{currentMpt.totalFat | number : '1.2-2'}} fat -->
+
+    <div *ngIf="currentMpt.breakfastIngredients">
+      <span>
+        <h5>Breakfast</h5>
+        <!-- <button (click)="deleteMealFromMpt(currentMpt.breakfastIngredients.foodArray)">X</button> -->
+      </span>
+      <app-food-item
+        *ngFor="let food of currentMpt.breakfastIngredients.foodArray"
+        [foodItem]="food"
+      >
+      </app-food-item>
+    </div>
+    <div *ngIf="currentMpt.lunchIngredients">
+      <h5>Lunch</h5>
+      <app-food-item
+        *ngFor="let food of currentMpt.lunchIngredients.foodArray"
+        [foodItem]="food"
+      >
+      </app-food-item>
+    </div>
+    <div *ngIf="currentMpt.dinnerIngredients">
+      <h5>Dinner</h5>
+      <app-food-item
+        *ngFor="let food of currentMpt.dinnerIngredients.foodArray"
+        [foodItem]="food"
+      >
+      </app-food-item>
+    </div>
+    <div *ngIf="currentMpt.snacksIngredients">
+      <h5>Snacks</h5>
+      <app-food-item
+        *ngFor="let food of currentMpt.snacksIngredients.foodArray"
+        [foodItem]="food"
+      >
+      </app-food-item>
+    </div>
+  </div>
+</div>

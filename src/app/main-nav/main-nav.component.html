@@ -1,0 +1,39 @@
+<mat-sidenav-container class="example-container" >
+  <mat-sidenav mode="side" opened>
+      <mat-sidenav-container class="sidenav-container">
+        <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+            [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+            [mode]="(isHandset$ | async) ? 'over' : 'side'"
+            [opened]="!(isHandset$ | async)">
+          <mat-toolbar>Menu</mat-toolbar>
+          <mat-nav-list>
+            <a mat-list-item routerLink="">Frontpage</a>
+            <a mat-list-item routerLink="/mpt">Meal Plan Templates</a>
+            <a mat-list-item routerLink="/tpt">Training Plan Templates</a>
+          </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content>
+          <!-- <mat-toolbar color="primary">
+            <button
+              type="button"
+              aria-label="Toggle sidenav"
+              mat-icon-button
+              (click)="drawer.toggle()"
+              *ngIf="isHandset$ | async">
+              <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+            </button>
+            <span>F4FV2</span>
+          </mat-toolbar> -->
+          <!-- Add Content Here -->
+        </mat-sidenav-content>
+      </mat-sidenav-container>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <main>
+      <h1>*insert* title</h1>
+      <p>
+        *insert* application description
+      </p>
+    </main> 
+  </mat-sidenav-content>
+</mat-sidenav-container>

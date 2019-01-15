@@ -1,0 +1,19 @@
+table {
+    width: 100%;
+}
+.tr {
+    cursor: pointer;
+}
+.highlight {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #000000;
+}
+.mat-elevation-z8 {
+    height: 400px;
+    overflow: auto;
+}
+.myButton {
+    border: 1px solid #47008a;
+    border-radius: 12px;
+}

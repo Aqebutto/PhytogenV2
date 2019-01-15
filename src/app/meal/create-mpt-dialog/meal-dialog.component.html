@@ -1,0 +1,14 @@
+<mat-dialog-content class="mat-typography">
+  <h3>Create new Meal Template</h3>
+  <form class="example-form" [formGroup]="mptForm">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Title of Meal Plan" formControlName="title">
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Leave a comment" formControlName="comment"></textarea>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" (click)="submitForm()" [mat-dialog-close]="true">Create Meal Plan</button>
+  </form>
+</mat-dialog-content>

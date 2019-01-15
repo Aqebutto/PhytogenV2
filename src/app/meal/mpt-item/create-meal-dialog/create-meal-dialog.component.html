@@ -1,0 +1,46 @@
+<mat-dialog-content class="mat-typography">
+  <div class="form-container">
+    <h3>Add New Meal</h3>
+
+    <form class="form-container" [formGroup]="mealForm">
+      <mat-form-field>
+        <b>Name of the Meal</b>
+        <input matInput formControlName="name">
+      </mat-form-field>
+      <div formArrayName="food">
+
+        <div *ngFor="let i of foodForms.controls; let i= index"
+          [formGroupName]="i">
+
+          <mat-form-field>
+            <b>Name of the food</b>
+            <input matInput formControlName="name">
+          </mat-form-field>
+          <mat-form-field>
+            <b>Protein/100g</b>
+            <input matInput formControlName="protein">
+          </mat-form-field>
+          <mat-form-field>
+            <b>Carbs/100g</b>
+            <input matInput formControlName="carbs">
+          </mat-form-field>
+          <mat-form-field>
+            <b>Fat/100g</b>
+            <input matInput formControlName="fat">
+          </mat-form-field>
+          <mat-form-field>
+            <b>Kcal/100g</b>
+            <input matInput formControlName="kcal">
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="deleteFood(i)">Delete food</button>
+        </div>
+        
+      </div>
+      <br>
+      <button mat-raised-button color="primary" (click)="addIngredients()">Add food</button>
+      <div>
+        <button mat-raised-button color="secondary" (click)="submitForm()" [mat-dialog-close]="true">Done</button>
+      </div>
+    </form>
+  </div >
+</mat-dialog-content>

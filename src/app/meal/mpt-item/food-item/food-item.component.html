@@ -1,0 +1,24 @@
+<div>
+  {{foodItem.name}}
+  <input size="5"
+    value="{{foodItem.quantity | number : '1.2-2'}}" 
+    #box (keyup.enter)="onEnter(box.value)">g
+  {{foodItem.kcal | number : '1.2-2'}} kcal
+</div>
+<!-- *ngIf="!showEditQuantity" -->
+<!-- <button (click)="removeFoodItem(foodItem)">X</button> -->
+
+<!-- <form class="form-container" [formGroup]="editFoodForm" *ngIf="showEditQuantity">
+  <mat-form-field>
+    <b>New Quantity:</b>
+    <input matInput formControlName="quantity">
+  </mat-form-field>
+  <span *ngIf="quantity.invalid && quantity.touched">
+    {{ quantity.errors.min.actual }} has to be a number greater than 0!
+  </span>
+
+  <br>
+  <button mat-raised-button color="primary" [disabled]="editFoodForm.invalid" (click)="submitForm()">Update</button>
+</form> -->
+
+

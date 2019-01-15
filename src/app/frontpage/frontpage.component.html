@@ -1,0 +1,98 @@
+<div class="wrapper">
+  <img src="assets/front_img.jpg" id="bg" />
+  <mat-card class="frontpage-card">
+    <mat-tab-group class="mat-tab-group">
+      <mat-tab label="About">
+        <div id="about">Generate diet plans with Phytogen!</div>
+        <img src="../../assets/phytogenLogo.png" class="phytogenLogo" />
+      </mat-tab>
+      <mat-tab *ngIf="tab == 1" label="Sign up" #signupTab>
+        <form [formGroup]="signupForm" novalidate>
+          <h4 for="email">Please sign up</h4>
+          <div>
+            <mat-form-field>
+              <input
+                matInput
+                type="email"
+                formControlName="email"
+                placeholder="email"
+                name="email"
+                tofocus
+              />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input
+                matInput
+                type="password"
+                formControlName="password"
+                placeholder="password"
+                name="password"
+                autofocus
+              />
+            </mat-form-field>
+          </div>
+          <button
+            mat-button
+            class="btn btn-primary"
+            (click)="onSignup()"
+            type="submit"
+            [disabled]="!signupForm.get('email').valid"
+          >
+            Sign Up
+          </button>
+        </form>
+        <button mat-button class="btn btn-primary" (click)="changeTab()">
+          Already Signed up?
+        </button>
+      </mat-tab>
+
+      <mat-tab *ngIf="tab == 2" label="Sign  in">
+        <form [formGroup]="signinForm" novalidate>
+          <h4 for="email">Please sign in</h4>
+          <div>
+            <mat-form-field>
+              <input
+                matInput
+                type="email"
+                formControlName="email"
+                placeholder="email"
+                autofocus
+              />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <input
+                matInput
+                type="password"
+                formControlName="password"
+                placeholder="password"
+                autofocus
+              />
+            </mat-form-field>
+          </div>
+          <button
+            mat-button
+            class="btn btn-primary"
+            (click)="onSignin()"
+            type="submit"
+            [disabled]="!signinForm.get('email').valid"
+            routerLink="/nav"
+          >
+            Sign In
+          </button>
+        </form>
+        <button
+          mat-button
+          class="btn btn-primary"
+          name="signupBtn"
+          (click)="changeTab()"
+        >
+          Sign up new User
+        </button>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card>
+</div>

@@ -1,0 +1,11 @@
+table {
+    width: 100%;
+}
+.mptTitle {
+    cursor: pointer;
+}
+.highlight {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #045821;
+}

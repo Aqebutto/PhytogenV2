@@ -1,0 +1,29 @@
+<h3>Your Training Plan Templates</h3>
+<hr>
+<button mat-raised-button color="primary"  routerLink="/nav">Back</button>
+<button class="myButton" mat-button color="primary" (click)="openDialog()">Create Training Plan</button>
+<div class="table actions-on-hover">
+  <table mat-table [dataSource]="tpts"  class="mat-elevation-z8">
+    <ng-container matColumnDef="title">
+      <th  mat-header-cell *matHeaderCellDef> Title </th>
+      <td routerLinkActive="highlight"   mat-cell [routerLink]="[ '/tpt', element.id ]" *matCellDef="let element">
+         {{element.title}}         
+       </td>
+       <!-- <app-tpt-item *ngFor="let tpt of tpts"
+         [tptItem] ="tpt" >
+       </app-tpt-item> -->
+       <!-- (click)="sendtpt(tpt)" 
+        (click)="sendtpt()" -->
+   
+    </ng-container>
+
+    <ng-container matColumnDef="comment">
+      <th mat-header-cell *matHeaderCellDef> Comment </th>
+      <td mat-cell *matCellDef="let element"> {{element.comment}} </td>
+    </ng-container>
+   
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+<router-outlet></router-outlet>

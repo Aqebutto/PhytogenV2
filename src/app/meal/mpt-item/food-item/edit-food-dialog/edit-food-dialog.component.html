@@ -1,0 +1,9 @@
+<form class="form-container" [formGroup]="editFoodForm">
+  <mat-form-field>
+    <b>New Quantity:</b>
+    <input matInput formControlName="quantity">
+  </mat-form-field>
+
+  <br>
+  <button mat-raised-button color="primary" (click)="submitForm()" [mat-dialog-close]="true">Update</button>
+</form>
